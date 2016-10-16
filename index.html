@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>Minimum by vkku</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">Minimum</h1>
+      <h2 class="project-tagline">A utility to find content of various types available in a convenient way and can be downloaded unobstructedly.</h2>
+      <a href="https://github.com/vkku/contentSearch-minimum" class="btn">View on GitHub</a>
+      <a href="https://github.com/vkku/contentSearch-minimum/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/vkku/contentSearch-minimum/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <p>&lt;!DOCTYPE HTML&gt;
+ &lt;!-- 
+             _   ___          __     __ __
+            | | / (<em>)  ____</em> / /__  / //<em>/</em> ____ _  ___  _____
+            | |/ / / |/ / -<em>)  '</em>/ / ,&lt; / // /  ' \/ _ `/ <strong>/
+            |_</strong>/<em>/|__</em>/__/<em>/\</em>\ /<em>/|</em>|_,<em>/</em>/<em>/</em>/_,<em>/</em>/
+ --&gt;</p>
+
+<p>
+</p>
+    
+    Search
+    
+        .search{
+                text-align: center;
+                height: 100%;
+                width: 100%;
+        }
+        body{
+            background-color: #FAEBD7;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    }
+    #searchBox{
+        position: relative;
+        width: 50%;
+        height: 90%;
+    }
+&amp;lt;/style&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+    window.onload = function init (argument) {
+        var box = document.getElementById(&amp;#39;searchBox&amp;#39;);
+        box.focus();
+        box.addEventListener(&amp;quot;keydown&amp;quot;, function (e) {
+            if (e.keyCode === 13) { //Enter key checking
+                search(e);
+            }
+        });
+        //Listener for ok button
+    }
+    function search (argument) {
+        var query = document.getElementById(&amp;#39;searchBox&amp;#39;);
+        var ebook = document.getElementById(&amp;#39;ebook&amp;#39;)
+        var audio = document.getElementById(&amp;#39;audio&amp;#39;);
+        var video = document.getElementById(&amp;#39;video&amp;#39;);
+        var apk = document.getElementById(&amp;#39;apk&amp;#39;);
+                    var jad = document.getElementById(&amp;#39;jad&amp;#39;);
+        var link = &amp;quot;http://www.google.com/search?q=&amp;quot; + query.value;
+
+        //Search Ebooks
+        if(ebook.checked === true)
+        {
+            var queryEbook = &amp;quot; -inurl:htm -inurl:html intitle:“index of” +(“/ebooks”|“/book”) +(chm|pdf|zip) &amp;quot;;
+            finalLink = link+encodeURIComponent(queryEbook);
+            window.open(finalLink,&amp;quot;_blank&amp;quot;);
+        }
+        //Search Audio
+        else if(audio.checked === true)
+        {
+            var queryAudio = &amp;quot; -inurl:(htm|html|php|pls|txt) intitle:index.of “last modified” (mp3|wma|aac|flac) &amp;quot;;
+            finalLink = link+encodeURIComponent(queryAudio);
+            window.open(finalLink,&amp;quot;_blank&amp;quot;);
+        }
+        //Video Search
+        else if(video.checked === true)
+        {
+            var queryVideo = &amp;quot; -inurl:(htm|html|php|pls|txt) intitle:index.of “last modified” (mkv|mp4|avi|wmv|asf|mov|flv|mpeg|divx) &amp;quot;;
+            finalLink = link+encodeURIComponent(queryVideo);
+            window.open(finalLink,&amp;quot;_blank&amp;quot;);
+        }
+        //APK Search
+        else if(apk.checked === true)
+        {
+            var queryApk = &amp;quot; -inurl:htm -inurl:html intitle:“index of” apk &amp;quot;;
+            finalLink = link+encodeURIComponent(queryApk);
+            window.open(finalLink,&amp;quot;_blank&amp;quot;);
+        }
+                    //JAD Search
+        else if(jad.checked === true)
+        {
+            var queryApk = &amp;quot; -inurl:htm -inurl:html intitle:“index of” jad|jar&amp;quot;;
+            finalLink = link+encodeURIComponent(queryApk);
+            window.open(finalLink,&amp;quot;_blank&amp;quot;);
+        }
+        //Plain Vanilla Search
+        else
+        {
+            window.open(link,&amp;quot;_blank&amp;quot;);
+        }
+    }
+    /*
+    Error Log
+    The error is mainly because the link is not quoted properly
+    eg.Uncomment to see this poorly encapsulated link, just use inverted quotes
+    to rectify :
+    -inurl:htm -inurl:html intitle:&amp;quot;index of&amp;quot; apk
+    */
+    function cleared (argument) {
+        var query = document.getElementById(&amp;#39;searchBox&amp;#39;);
+        var ebook = document.getElementById(&amp;#39;ebook&amp;#39;)
+        var audio = document.getElementById(&amp;#39;audio&amp;#39;);
+        var video = document.getElementById(&amp;#39;video&amp;#39;);
+        var apk = document.getElementById(&amp;#39;apk&amp;#39;);
+                    var jad = document.getElementById(&amp;#39;jad&amp;#39;);
+        query.value = &amp;quot;&amp;quot;;
+        ebook.checked = false;
+        audio.checked = false;
+        video.checked = false;
+        apk.checked = false;
+                    jad.checked = false;
+    }
+&amp;lt;/script&amp;gt;
+&amp;lt;link rel=&amp;quot;shortcut icon&amp;quot; href=&amp;quot;https://dl.dropbox.com/s/na4uimx8nm92rmw/minimum.png&amp;quot;&amp;gt;
+&amp;lt;script&amp;gt;
+  (function(i,s,o,g,r,a,m){i[&amp;#39;GoogleAnalyticsObject&amp;#39;]=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,&amp;#39;script&amp;#39;,&amp;#39;//www.google-analytics.com/analytics.js&amp;#39;,&amp;#39;ga&amp;#39;);
+  ga(&amp;#39;create&amp;#39;, &amp;#39;UA-72512554-1&amp;#39;, &amp;#39;auto&amp;#39;);
+  ga(&amp;#39;send&amp;#39;, &amp;#39;pageview&amp;#39;);
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="search"&gt;
+        &lt;h1&gt;Input Query&lt;/h1&gt;
+        &lt;br&gt;
+        &lt;input type="text" id="searchBox" tabindex='1'&gt;
+        &lt;button type="button" onclick="search()" tabindex='5'&gt; Go &lt;/button&gt;
+        &lt;input type="button" onclick="cleared()" value=" Clear " tabindex='6'&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;    &amp;lt;br&amp;gt;
+
+    &amp;lt;h3&amp;gt;
+        Can also search :
+        &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;searchRadio&amp;quot; id=&amp;quot;ebook&amp;quot; tabindex=&amp;#39;2&amp;#39;&amp;gt;
+        &amp;lt;label for=&amp;quot;ebook&amp;quot;&amp;gt; Ebook&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;searchRadio&amp;quot; id=&amp;quot;audio&amp;quot; tabindex=&amp;#39;3&amp;#39;&amp;gt;
+        &amp;lt;label for=&amp;quot;audio&amp;quot;&amp;gt; Audio&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;searchRadio&amp;quot; id=&amp;quot;video&amp;quot; tabindex=&amp;#39;4&amp;#39;&amp;gt;
+        &amp;lt;label for=&amp;quot;video&amp;quot;&amp;gt; Video&amp;lt;/label&amp;gt;
+        &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;searchRadio&amp;quot; id=&amp;quot;apk&amp;quot; tabindex=&amp;#39;5&amp;#39;&amp;gt;
+        &amp;lt;label for=&amp;quot;apk&amp;quot;&amp;gt; APK&amp;lt;/label&amp;gt;
+                    &amp;lt;input type=&amp;quot;radio&amp;quot; name=&amp;quot;searchRadio&amp;quot; id=&amp;quot;jad&amp;quot; tabindex=&amp;#39;6&amp;#39;&amp;gt;
+        &amp;lt;label for=&amp;quot;jad&amp;quot;&amp;gt; Java / S40 Devices Apps&amp;lt;/label&amp;gt;
+    &amp;lt;/h3&amp;gt;
+&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;/body&gt;
+&lt;/html&gt;
+Contact GitHub &lt;/p&gt;
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/vkku/contentSearch-minimum">Minimum</a> is maintained by <a href="https://github.com/vkku">vkku</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
