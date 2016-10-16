@@ -1,0 +1,156 @@
+<!DOCTYPE HTML>
+ <!-- 
+ 			 _   ___          __     __ __
+			| | / (_)  _____ / /__  / //_/_ ____ _  ___  _____
+			| |/ / / |/ / -_)  '_/ / ,< / // /  ' \/ _ `/ __/
+			|___/_/|___/\__/_/\_\ /_/|_|\_,_/_/_/_/\_,_/_/
+ -->
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Search</title>
+	<style type="text/css">
+		.search{
+		        text-align: center;
+		        height: 100%;
+		        width: 100%;
+		}
+		body{
+			background-color: #FAEBD7;
+			
+		}
+		#searchBox{
+			position: relative;
+			width: 50%;
+			height: 90%;
+		}
+	</style>
+	<script type="text/javascript">
+		window.onload = function init (argument) {
+			var box = document.getElementById('searchBox');
+			box.focus();
+			box.addEventListener("keydown", function (e) {
+			    if (e.keyCode === 13) { //Enter key checking
+			        search(e);
+			    }
+			});
+			//Listener for ok button
+
+		}
+		function search (argument) {
+			var query = document.getElementById('searchBox');
+			var ebook = document.getElementById('ebook')
+			var audio = document.getElementById('audio');
+			var video = document.getElementById('video');
+			var apk = document.getElementById('apk');
+                        var jad = document.getElementById('jad');
+
+			var link = "http://www.google.com/search?q=" + query.value;
+			
+			//Search Ebooks
+			if(ebook.checked === true)
+			{
+				var queryEbook = " -inurl:htm -inurl:html intitle:“index of” +(“/ebooks”|“/book”) +(chm|pdf|zip) ";
+				finalLink = link+encodeURIComponent(queryEbook);
+				window.open(finalLink,"_blank");
+			}
+			//Search Audio
+			else if(audio.checked === true)
+			{
+				var queryAudio = " -inurl:(htm|html|php|pls|txt) intitle:index.of “last modified” (mp3|wma|aac|flac) ";
+				finalLink = link+encodeURIComponent(queryAudio);
+				window.open(finalLink,"_blank");
+			}
+			//Video Search
+			else if(video.checked === true)
+			{
+				var queryVideo = " -inurl:(htm|html|php|pls|txt) intitle:index.of “last modified” (mkv|mp4|avi|wmv|asf|mov|flv|mpeg|divx) ";
+				finalLink = link+encodeURIComponent(queryVideo);
+				window.open(finalLink,"_blank");
+			}
+
+			//APK Search
+			else if(apk.checked === true)
+			{
+				var queryApk = " -inurl:htm -inurl:html intitle:“index of” apk ";
+				finalLink = link+encodeURIComponent(queryApk);
+				window.open(finalLink,"_blank");
+			}
+
+                        //JAD Search
+			else if(jad.checked === true)
+			{
+				var queryApk = " -inurl:htm -inurl:html intitle:“index of” jad|jar";
+				finalLink = link+encodeURIComponent(queryApk);
+				window.open(finalLink,"_blank");
+			}
+
+			//Plain Vanilla Search
+			else
+			{
+				window.open(link,"_blank");
+			}
+		}
+
+		/*
+		Error Log
+		The error is mainly because the link is not quoted properly
+		eg.Uncomment to see this poorly encapsulated link, just use inverted quotes
+		to rectify :
+		-inurl:htm -inurl:html intitle:"index of" apk
+		*/
+
+		function cleared (argument) {
+			var query = document.getElementById('searchBox');
+			var ebook = document.getElementById('ebook')
+			var audio = document.getElementById('audio');
+			var video = document.getElementById('video');
+			var apk = document.getElementById('apk');
+                        var jad = document.getElementById('jad');
+			query.value = "";
+			ebook.checked = false;
+			audio.checked = false;
+			video.checked = false;
+			apk.checked = false;
+                        jad.checked = false;
+		}
+	</script>
+	<link rel="shortcut icon" href="https://dl.dropbox.com/s/na4uimx8nm92rmw/minimum.png">
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-72512554-1', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+</head>
+<body>
+	<div class="search">
+		<h1>Input Query</h1>
+		<br>
+		<input type="text" id="searchBox" tabindex='1'>
+		<button type="button" onclick="search()" tabindex='5'> Go </button>
+		<input type="button" onclick="cleared()" value=" Clear " tabindex='6'>
+
+		<br>
+		
+		<h3>
+			Can also search :
+			<input type="radio" name="searchRadio" id="ebook" tabindex='2'>
+			<label for="ebook"> Ebook</label>
+			<input type="radio" name="searchRadio" id="audio" tabindex='3'>
+			<label for="audio"> Audio</label>
+			<input type="radio" name="searchRadio" id="video" tabindex='4'>
+			<label for="video"> Video</label>
+			<input type="radio" name="searchRadio" id="apk" tabindex='5'>
+			<label for="apk"> APK</label>
+                        <input type="radio" name="searchRadio" id="jad" tabindex='6'>
+			<label for="jad"> Java / S40 Devices Apps</label>
+		</h3>
+	</div>
+</body>
+</html>
